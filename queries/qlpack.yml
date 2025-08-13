@@ -1,0 +1,11 @@
+name: codeql-solana-analyzer-v2
+version: 2.0.0
+description: Production-ready security analysis for Solana and Anchor smart contracts
+author: OtterSec
+license: MIT
+
+queries: src
+suites: suites
+
+dependencies:
+  codeql/rust-all: "*"

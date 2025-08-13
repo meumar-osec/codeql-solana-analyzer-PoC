@@ -1,0 +1,726 @@
+---
+queries:
+ -
+  pack: codeql-solana-analyzer-v2#3
+  relativeQueryPath: SealevelSecurityAnalyzer.ql
+  relativeBqrsPath: codeql-solana-analyzer-v2/SealevelSecurityAnalyzer.bqrs
+  metadata:
+    name: Sealevel Attack Patterns - Comprehensive Security Analyzer
+    description: Detects all major Sealevel attack patterns in Solana programs
+    kind: problem
+    problem.severity: error
+    security-severity: 9.5
+    precision: high
+    id: sealevel/comprehensive-security
+    tags: |-
+      security
+             sealevel
+             solana
+             anchor
+             cpi
+             pda
+             initialization
+             authorization
+extensionPacks: []
+packs:
+  codeql/util#2:
+    name: codeql/util
+    version: 2.0.15
+    isLibrary: true
+    isExtensionPack: false
+    localPath: file:///Users/meumar/.codeql/packages/codeql/util/2.0.15/
+    localPackDefinitionFile: file:///Users/meumar/.codeql/packages/codeql/util/2.0.15/qlpack.yml
+    headSha: da3e5479df71bcec4a0b8e385187065dc6a63eeb
+    runDataExtensions: []
+  codeql/threat-models#1:
+    name: codeql/threat-models
+    version: 1.0.28
+    isLibrary: true
+    isExtensionPack: false
+    localPath: file:///Users/meumar/.codeql/packages/codeql/threat-models/1.0.28/
+    localPackDefinitionFile: file:///Users/meumar/.codeql/packages/codeql/threat-models/1.0.28/qlpack.yml
+    headSha: da3e5479df71bcec4a0b8e385187065dc6a63eeb
+    runDataExtensions: []
+  codeql/rust-all#0:
+    name: codeql/rust-all
+    version: 0.1.13
+    isLibrary: true
+    isExtensionPack: false
+    localPath: file:///Users/meumar/.codeql/packages/codeql/rust-all/0.1.13/
+    localPackDefinitionFile: file:///Users/meumar/.codeql/packages/codeql/rust-all/0.1.13/qlpack.yml
+    headSha: da3e5479df71bcec4a0b8e385187065dc6a63eeb
+    runDataExtensions: []
+  codeql-solana-analyzer-v2#3:
+    name: codeql-solana-analyzer-v2
+    version: 2.0.0
+    isLibrary: false
+    isExtensionPack: false
+    localPath: file:///Users/meumar/Desktop/Osec/codeql-radar/codeql-solana-analyzer-v2/queries/
+    localPackDefinitionFile: file:///Users/meumar/Desktop/Osec/codeql-radar/codeql-solana-analyzer-v2/queries/qlpack.yml
+    runDataExtensions:
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/async-rs.model.yml
+      index: 0
+      firstRowId: 0
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/futures.model.yml
+      index: 0
+      firstRowId: 1
+      rowCount: 14
+      locations:
+        lineNumbers: A=6+1*13
+        columnNumbers: A=9*14
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/genericarray.model.yml
+      index: 0
+      firstRowId: 15
+      rowCount: 4
+      locations:
+        lineNumbers: A=6+1*3
+        columnNumbers: A=9*4
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/http.model.yml
+      index: 0
+      firstRowId: 19
+      rowCount: 8
+      locations:
+        lineNumbers: A=6+1*7
+        columnNumbers: A=9*8
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/libc.model.yml
+      index: 0
+      firstRowId: 27
+      rowCount: 2
+      locations:
+        lineNumbers: A=6+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/libc.model.yml
+      index: 1
+      firstRowId: 29
+      rowCount: 8
+      locations:
+        lineNumbers: A=12+1*7
+        columnNumbers: A=9*8
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/log.model.yml
+      index: 0
+      firstRowId: 37
+      rowCount: 18
+      locations:
+        lineNumbers: A=6+1*17
+        columnNumbers: A=9*18
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/postgres.model.yml
+      index: 0
+      firstRowId: 55
+      rowCount: 10
+      locations:
+        lineNumbers: A=6+1*9
+        columnNumbers: A=9*10
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/regex.model.yml
+      index: 0
+      firstRowId: 65
+      rowCount: 1
+      locations:
+        lineNumbers: A=7
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/reqwest.model.yml
+      index: 0
+      firstRowId: 66
+      rowCount: 2
+      locations:
+        lineNumbers: A=6+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/reqwest.model.yml
+      index: 1
+      firstRowId: 68
+      rowCount: 2
+      locations:
+        lineNumbers: A=12+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/reqwest.model.yml
+      index: 2
+      firstRowId: 70
+      rowCount: 10
+      locations:
+        lineNumbers: A=18+1*9
+        columnNumbers: A=9*10
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/rusqlite.model.yml
+      index: 0
+      firstRowId: 80
+      rowCount: 6
+      locations:
+        lineNumbers: A=6+1*5
+        columnNumbers: A=9*6
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/rusqlite.model.yml
+      index: 1
+      firstRowId: 86
+      rowCount: 4
+      locations:
+        lineNumbers: A=16+1*3
+        columnNumbers: A=9*4
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/rustcrypto/rustcrypto.model.yml
+      index: 0
+      firstRowId: 90
+      rowCount: 30
+      locations:
+        lineNumbers: A=6+1*29
+        columnNumbers: A=9*30
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/rustls.model.yml
+      index: 0
+      firstRowId: 120
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/rustls.model.yml
+      index: 1
+      firstRowId: 121
+      rowCount: 4
+      locations:
+        lineNumbers: A=11+1*3
+        columnNumbers: A=9*4
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/env.model.yml
+      index: 0
+      firstRowId: 125
+      rowCount: 9
+      locations:
+        lineNumbers: A=6+1*8
+        columnNumbers: A=9*9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/fs.model.yml
+      index: 0
+      firstRowId: 134
+      rowCount: 7
+      locations:
+        lineNumbers: A=6+1*6
+        columnNumbers: A=9*7
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/fs.model.yml
+      index: 1
+      firstRowId: 141
+      rowCount: 27
+      locations:
+        lineNumbers: A=17+1*26
+        columnNumbers: A=9*27
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/fs.model.yml
+      index: 2
+      firstRowId: 168
+      rowCount: 5
+      locations:
+        lineNumbers: A=48+1*4
+        columnNumbers: A=9*5
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/io.model.yml
+      index: 0
+      firstRowId: 173
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/io.model.yml
+      index: 1
+      firstRowId: 174
+      rowCount: 29
+      locations:
+        lineNumbers: A=11+1*28
+        columnNumbers: A=9*29
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/lang-alloc.model.yml
+      index: 0
+      firstRowId: 203
+      rowCount: 1
+      locations:
+        lineNumbers: A=7
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/lang-alloc.model.yml
+      index: 1
+      firstRowId: 204
+      rowCount: 17
+      locations:
+        lineNumbers: A=13+1*16
+        columnNumbers: A=9*17
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/lang-alloc.model.yml
+      index: 2
+      firstRowId: 221
+      rowCount: 13
+      locations:
+        lineNumbers: A=35+1*2+2*2+1*8
+        columnNumbers: A=9*13
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/lang-core.model.yml
+      index: 0
+      firstRowId: 234
+      rowCount: 53
+      locations:
+        lineNumbers: A=7+2+1*4+2+1*13+2+1*13+2+1*5+2+1*5+2+1*6
+        columnNumbers: A=9*53
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/lang-core.model.yml
+      index: 1
+      firstRowId: 287
+      rowCount: 6
+      locations:
+        lineNumbers: A=71+2+1*4
+        columnNumbers: A=9*6
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/lang-core.model.yml
+      index: 2
+      firstRowId: 293
+      rowCount: 7
+      locations:
+        lineNumbers: A=83+1*6
+        columnNumbers: A=9*7
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/net.model.yml
+      index: 0
+      firstRowId: 300
+      rowCount: 2
+      locations:
+        lineNumbers: A=6+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/stdlib/net.model.yml
+      index: 1
+      firstRowId: 302
+      rowCount: 5
+      locations:
+        lineNumbers: A=12+1*4
+        columnNumbers: A=9*5
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio-postgres.model.yml
+      index: 0
+      firstRowId: 307
+      rowCount: 12
+      locations:
+        lineNumbers: A=6+1*11
+        columnNumbers: A=9*12
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio-postgres.model.yml
+      index: 1
+      firstRowId: 319
+      rowCount: 2
+      locations:
+        lineNumbers: A=22+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio/fs.model.yml
+      index: 0
+      firstRowId: 321
+      rowCount: 6
+      locations:
+        lineNumbers: A=6+1*5
+        columnNumbers: A=9*6
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio/io.model.yml
+      index: 0
+      firstRowId: 327
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio/io.model.yml
+      index: 1
+      firstRowId: 328
+      rowCount: 41
+      locations:
+        lineNumbers: A=11+1*40
+        columnNumbers: A=9*41
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio/net.model.yml
+      index: 0
+      firstRowId: 369
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/tokio/net.model.yml
+      index: 1
+      firstRowId: 370
+      rowCount: 4
+      locations:
+        lineNumbers: A=11+1*3
+        columnNumbers: A=9*4
+     -
+      pack: codeql/rust-all#0
+      relativePath: codeql/rust/frameworks/url.model.yml
+      index: 0
+      firstRowId: 374
+      rowCount: 1
+      locations:
+        lineNumbers: A=7
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/actix-web.model.yml
+      index: 0
+      firstRowId: 375
+      rowCount: 1314
+      locations:
+        lineNumbers: A=7+1*1313
+        columnNumbers: A=9*1314
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/actix-web.model.yml
+      index: 1
+      firstRowId: 1689
+      rowCount: 51
+      locations:
+        lineNumbers: A=1325+1*50
+        columnNumbers: A=9*51
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/clap.model.yml
+      index: 0
+      firstRowId: 1740
+      rowCount: 490
+      locations:
+        lineNumbers: A=7+1*489
+        columnNumbers: A=9*490
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/clap.model.yml
+      index: 1
+      firstRowId: 2230
+      rowCount: 68
+      locations:
+        lineNumbers: A=501+1*67
+        columnNumbers: A=9*68
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/hyper.model.yml
+      index: 0
+      firstRowId: 2298
+      rowCount: 412
+      locations:
+        lineNumbers: A=7+1*411
+        columnNumbers: A=9*412
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/hyper.model.yml
+      index: 1
+      firstRowId: 2710
+      rowCount: 15
+      locations:
+        lineNumbers: A=423+1*14
+        columnNumbers: A=9*15
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/hyper.model.yml
+      index: 2
+      firstRowId: 2725
+      rowCount: 4
+      locations:
+        lineNumbers: A=442+1*3
+        columnNumbers: A=9*4
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/libc.model.yml
+      index: 0
+      firstRowId: 2729
+      rowCount: 76
+      locations:
+        lineNumbers: A=7+1*75
+        columnNumbers: A=9*76
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/libc.model.yml
+      index: 1
+      firstRowId: 2805
+      rowCount: 2
+      locations:
+        lineNumbers: A=87+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/libc.model.yml
+      index: 2
+      firstRowId: 2807
+      rowCount: 4
+      locations:
+        lineNumbers: A=93+1*3
+        columnNumbers: A=9*4
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/log.model.yml
+      index: 0
+      firstRowId: 2811
+      rowCount: 57
+      locations:
+        lineNumbers: A=7+1*56
+        columnNumbers: A=9*57
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/log.model.yml
+      index: 1
+      firstRowId: 2868
+      rowCount: 6
+      locations:
+        lineNumbers: A=68+1*5
+        columnNumbers: A=9*6
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/memchr.model.yml
+      index: 0
+      firstRowId: 2874
+      rowCount: 159
+      locations:
+        lineNumbers: A=7+1*158
+        columnNumbers: A=9*159
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/memchr.model.yml
+      index: 1
+      firstRowId: 3033
+      rowCount: 6
+      locations:
+        lineNumbers: A=170+1*5
+        columnNumbers: A=9*6
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/once_cell.model.yml
+      index: 0
+      firstRowId: 3039
+      rowCount: 18
+      locations:
+        lineNumbers: A=7+1*17
+        columnNumbers: A=9*18
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rand.model.yml
+      index: 0
+      firstRowId: 3057
+      rowCount: 81
+      locations:
+        lineNumbers: A=7+1*80
+        columnNumbers: A=9*81
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/reqwest.model.yml
+      index: 0
+      firstRowId: 3138
+      rowCount: 416
+      locations:
+        lineNumbers: A=7+1*415
+        columnNumbers: A=9*416
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/reqwest.model.yml
+      index: 1
+      firstRowId: 3554
+      rowCount: 29
+      locations:
+        lineNumbers: A=427+1*28
+        columnNumbers: A=9*29
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/reqwest.model.yml
+      index: 2
+      firstRowId: 3583
+      rowCount: 5
+      locations:
+        lineNumbers: A=460+1*4
+        columnNumbers: A=9*5
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rocket.model.yml
+      index: 0
+      firstRowId: 3588
+      rowCount: 874
+      locations:
+        lineNumbers: A=7+1*873
+        columnNumbers: A=9*874
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rocket.model.yml
+      index: 1
+      firstRowId: 4462
+      rowCount: 40
+      locations:
+        lineNumbers: A=885+1*39
+        columnNumbers: A=9*40
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rocket.model.yml
+      index: 2
+      firstRowId: 4502
+      rowCount: 2
+      locations:
+        lineNumbers: A=929+1
+        columnNumbers: A=9*2
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rust.model.yml
+      index: 0
+      firstRowId: 4504
+      rowCount: 6498
+      locations:
+        lineNumbers: A=7+1*6497
+        columnNumbers: A=9*6498
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rust.model.yml
+      index: 1
+      firstRowId: 11002
+      rowCount: 396
+      locations:
+        lineNumbers: A=6509+1*395
+        columnNumbers: A=9*396
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/rust.model.yml
+      index: 2
+      firstRowId: 11398
+      rowCount: 24
+      locations:
+        lineNumbers: A=6909+1*23
+        columnNumbers: A=9*24
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/serde.model.yml
+      index: 0
+      firstRowId: 11422
+      rowCount: 259
+      locations:
+        lineNumbers: A=7+1*258
+        columnNumbers: A=9*259
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/serde.model.yml
+      index: 1
+      firstRowId: 11681
+      rowCount: 1
+      locations:
+        lineNumbers: A=270
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/smallvec.model.yml
+      index: 0
+      firstRowId: 11682
+      rowCount: 34
+      locations:
+        lineNumbers: A=7+1*33
+        columnNumbers: A=9*34
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/smallvec.model.yml
+      index: 1
+      firstRowId: 11716
+      rowCount: 5
+      locations:
+        lineNumbers: A=45+1*4
+        columnNumbers: A=9*5
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/smallvec.model.yml
+      index: 2
+      firstRowId: 11721
+      rowCount: 1
+      locations:
+        lineNumbers: A=54
+        columnNumbers: A=9
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/tokio.model.yml
+      index: 0
+      firstRowId: 11722
+      rowCount: 1543
+      locations:
+        lineNumbers: A=7+1*1542
+        columnNumbers: A=9*1543
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/tokio.model.yml
+      index: 1
+      firstRowId: 13265
+      rowCount: 84
+      locations:
+        lineNumbers: A=1554+1*83
+        columnNumbers: A=9*84
+     -
+      pack: codeql/rust-all#0
+      relativePath: ext/generated/tokio.model.yml
+      index: 2
+      firstRowId: 13349
+      rowCount: 7
+      locations:
+        lineNumbers: A=1642+1*6
+        columnNumbers: A=9*7
+     -
+      pack: codeql/threat-models#1
+      relativePath: ext/supported-threat-models.model.yml
+      index: 0
+      firstRowId: 13356
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/threat-models#1
+      relativePath: ext/threat-model-grouping.model.yml
+      index: 0
+      firstRowId: 13357
+      rowCount: 15
+      locations:
+        lineNumbers: A=8+3+1+3+1*5+3+1+5+1*3
+        columnNumbers: A=9*15

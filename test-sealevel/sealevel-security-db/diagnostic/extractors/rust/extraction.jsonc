@@ -1,0 +1,57 @@
+{
+  "source": {
+    "id": "rust/extractor/telemetry",
+    "name": "telemetry",
+    "extractorName": "rust"
+  },
+  "visibility": {
+    "statusPage": false,
+    "cliSummaryTable": false,
+    "telemetry": true
+  },
+  "severity": "note",
+  "textMessage": "",
+  "timestamp": "2025-08-13T16:33:10.066618Z",
+  "attributes": {
+    "numberOfManifests": 1,
+    "numberOfFiles": 5,
+    "durations": {
+      "crateGraph": {
+        "ms": 157,
+        "pretty": "0.157s"
+      },
+      "parseLibrary": {
+        "ms": 6340,
+        "pretty": "6.340s"
+      },
+      "loadManifest": {
+        "ms": 58362,
+        "pretty": "58.362s"
+      },
+      "extract": {
+        "ms": 12449,
+        "pretty": "12.449s"
+      },
+      "extractLibrary": {
+        "ms": 31263,
+        "pretty": "31.263s"
+      },
+      "findManifests": {
+        "ms": 1,
+        "pretty": "0.001s"
+      },
+      "parse": {
+        "ms": 1442,
+        "pretty": "1.442s"
+      },
+      "loadSource": {
+        "ms": 8717,
+        "pretty": "8.717s"
+      },
+      "total": {
+        "ms": 154747,
+        "pretty": "2min34.747s"
+      }
+    }
+  }
+}

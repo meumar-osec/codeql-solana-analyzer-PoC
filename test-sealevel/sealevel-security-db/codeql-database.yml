@@ -1,0 +1,12 @@
+---
+sourceLocationPrefix: /Users/meumar/Desktop/Osec/codeql-radar/codeql-solana-analyzer-v2/test-sealevel
+baselineLinesOfCode: 18044
+unicodeNewlines: false
+columnKind: utf8
+primaryLanguage: rust
+creationMetadata:
+  cliVersion: 2.22.3
+  creationTime: 2025-08-13T16:30:32.791699Z
+overlayBaseDatabase: false
+overlayDatabase: false
+finalised: true

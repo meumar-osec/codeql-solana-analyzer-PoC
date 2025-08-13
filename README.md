@@ -2,7 +2,7 @@
 
 **It's just a PoC, we used CodeQL queries to detect anchor sealevel vulnerabilities.**
 
-### Instal codeql CLI
+### Install codeql CLI
 - [CodeQL CLI](https://github.com/github/codeql-cli-binaries) installed
 - Rust toolchain
 - `jq` for JSON processing
@@ -18,4 +18,3 @@
 # Example: Analyze sealevel-attacks repository
 ./scripts/scan-project.sh /path/to/sealevel-attacks/programs/0-signer-authorization/insecure
 ```
-# codeql-solana-analyzer-PoC
